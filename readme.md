@@ -8,7 +8,9 @@ Django
 Django-rest-framework
 htmx
 
+MANTRAS:
+- Units should never be "deleted"
+
 TODO:
-- linter
 - migrate to postgres
 - finish 3 core inventory classes
