@@ -7,3 +7,8 @@ As of the first commit, the following is the entire dependency list of this appl
 Django
 Django-rest-framework
 htmx
+
+TODO:
+- linter
+- migrate to postgres
+- finish 3 core inventory classes
