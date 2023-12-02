@@ -1,7 +1,8 @@
 from django.db import models
 
 # Create your models here.
-
+from multiselectfield.utils import get_max_length
+from multiselectfield import MultiSelectField
 class Location(models.Model):
     '''
     Model for a location to put items (units) in.
@@ -13,11 +14,30 @@ class Location(models.Model):
     c_row = models.IntegerField()
     c_column = models.IntegerField()
 
-DELIVERY_TYPE_CHOICEFIELD = (
-    ('default', 'Default'),
-    ('cold-chain', 'Cold Chain'),
-    ('third-party', 'Third Party')
+DELIVERY_TYPE_DAYS_OF_WEEK_CHOICES = (
+    ('sunday', 'Sunday'),
+    ('monday', 'Monday'),
+    ('tuesday', 'Tuesday'),
+    ('wednesday', 'Wednesday'),
+    ('thursday', 'Thursday'),
+    ('friday', 'Friday'),
+    ('saturday', 'Saturday')
 )
+class DeliveryType(models.Model):
+    name = models.CharField(max_length=256)
+
+    # Reference to strategy
+    # https://github.com/goinnn/django-multiselectfield/issues/131#issuecomment-1368239342
+    days_of_week = MultiSelectField(
+        choices=DELIVERY_TYPE_DAYS_OF_WEEK_CHOICES, 
+        blank=True, 
+        max_length=get_max_length(DELIVERY_TYPE_DAYS_OF_WEEK_CHOICES, 
+        None))
+
+    start_date = models.DateField()
+
+    def __str__(self):
+        return self.name
 
 
 class InventoryManager(models.Manager):
@@ -41,14 +61,12 @@ class Inventory(models.Model):
     sku = models.IntegerField()
     brand = models.CharField(max_length=1000)
     vendor = models.CharField(max_length=1000)
-    delivery_type = models.CharField(max_length=48, choices=DELIVERY_TYPE_CHOICEFIELD)
-    unit_delivery_quantity = models.IntegerField() # how many units are delivered in a full casepack   
+    delivery_type = models.ForeignKey(DeliveryType, null=True, on_delete=models.SET_NULL)
+    unit_delivery_quantity = models.IntegerField() # how many units are delivered in a full casepack
     sale_price = models.IntegerField()
 
     def __str__(self):
         return str(self.name)
-
-
 
 class Unit(models.Model):
     '''
@@ -64,7 +82,10 @@ class Unit(models.Model):
     # should a unit ever have to be "deleted," even if the location it was in is deleted
     no_location = models.BooleanField(default=False)
 
-    
-
-
-
+class Delivery(models.Model):
+    '''
+    Delivery Records
+    '''
+    inventory = models.ManyToManyField(Inventory)
+    created_date = models.DateTimeField()
+    delivery_date = models.DateField()
