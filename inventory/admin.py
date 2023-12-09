@@ -5,6 +5,11 @@ from import_export.admin import ImportExportMixin
 class InventoryAdmin(ImportExportMixin, admin.ModelAdmin):
     list_display = ('name', 'sku', 'brand', 'vendor', 'delivery_type', 'unit_delivery_quantity', 'sale_price')
     
+    def create_delivery(self, request, inventory_id, *args, **kwargs):
+        pass
+    def receive_delivery(self, request, delivery_id, *args, **kwargs):
+        pass
+    
 class LocationAdmin(admin.ModelAdmin):
     pass
 
@@ -12,7 +17,9 @@ class UnitAdmin(admin.ModelAdmin):
     pass
 
 class DeliveryTypeAdmin(admin.ModelAdmin):
-    pass
+    readonly_fields = [
+        'next_delivery_date'
+    ]
 
 admin.site.register(Inventory, InventoryAdmin)
 admin.site.register(Location, LocationAdmin)

@@ -1,8 +1,11 @@
 from django.db import models
-
+from datetime import datetime
 # Create your models here.
 from multiselectfield.utils import get_max_length
 from multiselectfield import MultiSelectField
+
+from recurrence.fields import RecurrenceField
+
 class Location(models.Model):
     '''
     Model for a location to put items (units) in.
@@ -23,27 +26,32 @@ DELIVERY_TYPE_DAYS_OF_WEEK_CHOICES = (
     ('friday', 'Friday'),
     ('saturday', 'Saturday')
 )
+
 class DeliveryType(models.Model):
     name = models.CharField(max_length=256)
+    
+    recurrences = RecurrenceField()
 
-    # Reference to strategy
-    # https://github.com/goinnn/django-multiselectfield/issues/131#issuecomment-1368239342
-    days_of_week = MultiSelectField(
-        choices=DELIVERY_TYPE_DAYS_OF_WEEK_CHOICES, 
-        blank=True, 
-        max_length=get_max_length(DELIVERY_TYPE_DAYS_OF_WEEK_CHOICES, 
-        None))
+    start_date = models.DateField(auto_now_add=True, blank=True)
+    next_delivery_date = models.DateTimeField(blank=True, null=True)
 
-    start_date = models.DateField()
+    def save(self, *args, **kwargs):
+        # save override example https://stackoverflow.com/a/11821832/5877575
+        current_recurrences = self.recurrences
+        first_delivery = current_recurrences.after(
+            datetime(2023, 9, 9, 0, 0, 0)        
+        )
+        self.next_delivery_date = first_delivery
+        super(DeliveryType, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.name
-
 
 class InventoryManager(models.Manager):
     ''' 
     Basic manager for custom utilities on the Inventory class
     '''
+    
     def get_sale_price_currency(self):
         '''
         converts sales from cents (how it's stored) to USD as a STRING based on the recommendation
@@ -86,6 +94,12 @@ class Delivery(models.Model):
     '''
     Delivery Records
     '''
-    inventory = models.ManyToManyField(Inventory)
-    created_date = models.DateTimeField()
+    inventory = models.ManyToManyField(Inventory, through="InventoryDeliveryRecord")
+    created_date = models.DateTimeField(auto_now_add=True, blank=True)
     delivery_date = models.DateField()
+    
+class InventoryDeliveryRecord(models.Model):
+    delivery = models.ForeignKey(Delivery, on_delete=models.PROTECT)
+    inventory = models.ForeignKey(Inventory, on_delete=models.PROTECT)
+    quantity = models.IntegerField()
+    unit_order_price = models.IntegerField()

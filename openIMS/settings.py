@@ -47,8 +47,10 @@ INSTALLED_APPS = [
     'testapp',
 
     # external
+    'rest_framework',
     'import_export',
-    'multiselectfield'
+    'multiselectfield',
+    'recurrence'
 ]
 
 
@@ -81,10 +83,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'openIMS.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
