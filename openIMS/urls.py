@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework.urlpatterns import format_suffix_patterns
+
 from testapp.views import create_contact, delete_contact, ContactList
 
 urlpatterns = [
@@ -24,5 +26,15 @@ urlpatterns = [
     path("contacts/", ContactList.as_view(), name='contact-list'),
     path('delete-contact/<int:pk>/', delete_contact, name='delete-contact'),
     path('api-auth/', include('rest_framework.urls')), 
-    path('accounts/', include("django.contrib.auth.urls"))
+    path('accounts/', include("django.contrib.auth.urls")),
+
+
+    # All WRITES to the db related to inventory (deliveries, inventory audits, etc.)
+    # will have a url prefaced with /i/. This is to ensure ease in testing/organizing
+    # the related authentication as we set up WRITES from external sources (zebras,
+    # point of sale systems, etc.)
+
+    # TODO: currently inventory_list and inventory are READS prefaced with /i/
+
+    path('i/', include('inventory.urls')),
 ]

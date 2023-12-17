@@ -73,8 +73,11 @@ class Inventory(models.Model):
     unit_delivery_quantity = models.IntegerField() # how many units are delivered in a full casepack
     sale_price = models.IntegerField()
 
+    class Meta:
+        ordering = ['name']
+        
     def __str__(self):
-        return str(self.name)
+        return str(self.name) 
 
 class Unit(models.Model):
     '''
