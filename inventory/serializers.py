@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from inventory.models import Inventory
+from inventory.models import Inventory, InventoryDeliveryRecord
 
 class InventorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -13,4 +13,10 @@ class InventorySerializer(serializers.ModelSerializer):
             'unit_delivery_quantity', 
             'sale_price'
         ]
-    
+
+class InventoryDeliveryRecordSerializer(serializers.ModelSerializer):
+    model = InventoryDeliveryRecord
+    fields = [
+        'delivery',
+        'inventory'
+    ]
