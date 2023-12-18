@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     # internal
     'accounts',
     'inventory',
+    'deliveries',
     'testapp',
 
     # external

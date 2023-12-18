@@ -1,10 +1,9 @@
 from django.db import models
 from datetime import datetime
 # Create your models here.
-from multiselectfield.utils import get_max_length
-from multiselectfield import MultiSelectField
 
 from recurrence.fields import RecurrenceField
+from deliveries.models import DeliveryType, Delivery
 
 class Location(models.Model):
     '''
@@ -26,26 +25,6 @@ DELIVERY_TYPE_DAYS_OF_WEEK_CHOICES = (
     ('friday', 'Friday'),
     ('saturday', 'Saturday')
 )
-
-class DeliveryType(models.Model):
-    name = models.CharField(max_length=256)
-    
-    recurrences = RecurrenceField()
-
-    start_date = models.DateField(auto_now_add=True, blank=True)
-    next_delivery_date = models.DateTimeField(blank=True, null=True)
-
-    def save(self, *args, **kwargs):
-        # save override example https://stackoverflow.com/a/11821832/5877575
-        current_recurrences = self.recurrences
-        first_delivery = current_recurrences.after(
-            datetime(2023, 9, 9, 0, 0, 0)        
-        )
-        self.next_delivery_date = first_delivery
-        super(DeliveryType, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return self.name
 
 class InventoryManager(models.Manager):
     ''' 
@@ -93,14 +72,6 @@ class Unit(models.Model):
     # should a unit ever have to be "deleted," even if the location it was in is deleted
     no_location = models.BooleanField(default=False)
 
-class Delivery(models.Model):
-    '''
-    Delivery Records
-    '''
-    inventory = models.ManyToManyField(Inventory, through="InventoryDeliveryRecord")
-    created_date = models.DateTimeField(auto_now_add=True, blank=True)
-    delivery_date = models.DateField()
-    
 class InventoryDeliveryRecord(models.Model):
     delivery = models.ForeignKey(Delivery, on_delete=models.PROTECT)
     inventory = models.ForeignKey(Inventory, on_delete=models.PROTECT)
