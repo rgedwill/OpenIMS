@@ -14,6 +14,9 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+
+from . import views
+
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.urlpatterns import format_suffix_patterns
@@ -21,6 +24,7 @@ from rest_framework.urlpatterns import format_suffix_patterns
 from testapp.views import create_contact, delete_contact, ContactList
 
 urlpatterns = [
+    path('', views.base_view),
     path('admin/', admin.site.urls),
     path('create-contact/', create_contact, name='create-contact'),
     path("contacts/", ContactList.as_view(), name='contact-list'),
@@ -36,5 +40,5 @@ urlpatterns = [
 
     # TODO: currently inventory_list and inventory are READS prefaced with /i/
 
-    path('i/', include('inventory.urls')),
+    path('inventory/', include('inventory.urls')),
 ]
