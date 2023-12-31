@@ -55,7 +55,12 @@ INSTALLED_APPS = [
     'rest_framework',
     'import_export',
     'multiselectfield',
-    'recurrence'
+    'recurrence',
+    'compressor',
+
+
+    'tailwind',
+    'theme'
 ]
 
 
@@ -114,6 +119,23 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+# soluton from
+# https://github.com/timonweb/django-tailwind/issues/92#issuecomment-942836700
+NPM_BIN_PATH = "npm.cmd"
+
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+# Config for django-compressor
+COMPRESS_ROOT = BASE_DIR / 'static'
+
+COMPRESS_ENABLED = True
+
+STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
+
 
 
 # Internationalization
