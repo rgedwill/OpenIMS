@@ -45,7 +45,7 @@ class Inventory(models.Model):
     '''
 
     name = models.CharField(max_length=2000)
-    sku = models.IntegerField()
+    sku = models.CharField(max_length=10)
     brand = models.CharField(max_length=1000)
     vendor = models.CharField(max_length=1000)
     delivery_type = models.ForeignKey(DeliveryType, null=True, on_delete=models.SET_NULL)

@@ -42,11 +42,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # internal
+    # internal/api
     'accounts',
     'inventory',
     'deliveries',
     'testapp',
+
+    # display
+    'inventory_portal',
 
     # external
     'rest_framework',

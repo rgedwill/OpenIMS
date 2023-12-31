@@ -1,0 +1,46 @@
+[
+    {
+      "id": "",
+      "sku": "12345678",
+      "brand": "BrandX",
+      "vendor": "coca-cola",
+      "delivery_type": 2,
+      "name": "Premium Laptop",
+      "model": "inventory.inventory",
+      "unit_delivery_quantity": 10,
+      "sale_price": 1200
+    },
+    {
+      "id": "",
+      "sku": "23456789",
+      "brand": "BrandY",
+      "vendor": "goodfellow",
+      "delivery_type": 1,
+      "name": "Smartphone Pro",
+      "model": "inventory.inventory",
+      "unit_delivery_quantity": 15,
+      "sale_price": 800
+    },
+    {
+      "id": "",
+      "sku": "34567890",
+      "brand": "BrandZ",
+      "vendor": "ulta",
+      "delivery_type": 3,
+      "name": "Ultra HD LED TV",
+      "model": "inventory.inventory",
+      "unit_delivery_quantity": 5,
+      "sale_price": 2000
+    },
+    {
+      "id": "",
+      "sku": "45678901",
+      "brand": "BrandX",
+      "vendor": "coca-cola",
+      "delivery_type": 2,
+      "name": "Barista Coffee Maker",
+      "model": "inventory.inventory",
+      "unit_delivery_quantity": 8,
+      "sale_price": 300
+    }
+  ]

@@ -2,20 +2,7 @@
 {% block content %}
 
 <div class="flex flex-col items-center mx-10 md:mx-20">
-    <h1 class="prose-2xl mb-4">Ryan's To-Do list</h1>
-
-    <form class="mb-4">
-        
-        <div class="form-control">
-            <label>Task Description</label>
-        </div>
-
-        <div class="form-control">
-            <label>Is completed?</label>
-        </div>
-
-        <button type="submit" class="btn btn-primary mt-2">Submit</button>
-    </form>
+    <h1 class="prose-2xl mb-4">Inventory List</h1>
 
     
     <table class="table table-zebra table-lg">
@@ -34,9 +21,9 @@
                     <td>{{ inventory_entry.sku }}</td>
                     <td>{{ inventory_entry.delivery_type }}</td>
                     <td>
-                        <button class="btn btn-xs btn-success">Mark Complete</button>
-
-                        <button class="btn btn-xs btn-error">Delete</button>
+                        <button class="btn btn-xs btn-success">+</button>
+                        <span>12</span>
+                        <button class="btn btn-xs btn-error">-</button>
                     </td>
                 </tr>
         {% endfor %}

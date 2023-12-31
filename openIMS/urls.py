@@ -32,13 +32,9 @@ urlpatterns = [
     path('api-auth/', include('rest_framework.urls')), 
     path('accounts/', include("django.contrib.auth.urls")),
 
-
-    # All WRITES to the db related to inventory (deliveries, inventory audits, etc.)
-    # will have a url prefaced with /i/. This is to ensure ease in testing/organizing
-    # the related authentication as we set up WRITES from external sources (zebras,
-    # point of sale systems, etc.)
-
-    # TODO: currently inventory_list and inventory are READS prefaced with /i/
-
+    # DISPLAY
+    path('portal/inventory/', include('inventory_portal.urls')),
+    
+    #API
     path('inventory/', include('inventory.urls')),
 ]
