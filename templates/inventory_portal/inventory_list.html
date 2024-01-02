@@ -11,20 +11,24 @@
                 <th>Name</th>
                 <th>SKU</th>
                 <th>Delivery Type</th>
+                <th>On Order</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody id="todo-table-body">
         {% for inventory_entry in inventory %}
-                <tr>
+                <tr class="bg-secondary-content">
                     <td>{{ inventory_entry.name }}</td>
                     <td>{{ inventory_entry.sku }}</td>
                     <td>{{ inventory_entry.delivery_type }}</td>
                     <td>
-                        <button class="btn btn-xs btn-blue">+</button>
-                        <span>12</span>
-                        <button class="btn btn-xs btn-error">-</button>
+                        <span>12</span>                        
                     </td>
+                    <td>
+                        <button class="btn btn-xs btn-accent">Order</button>
+
+                    </td>
+
                 </tr>
         {% endfor %}
         </tbody>

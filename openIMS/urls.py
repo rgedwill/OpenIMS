@@ -37,4 +37,7 @@ urlpatterns = [
     
     #API
     path('inventory/', include('inventory.urls')),
+
+    #UTILITY
+    path("__reload__/", include("django_browser_reload.urls")),
 ]
