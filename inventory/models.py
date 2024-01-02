@@ -1,9 +1,12 @@
+from django.conf import settings
 from django.db import models
 from datetime import datetime
 # Create your models here.
 
 from recurrence.fields import RecurrenceField
 from deliveries.models import DeliveryType, Delivery
+from accounts.models import CustomUser
+
 
 class Location(models.Model):
     '''
@@ -77,3 +80,5 @@ class InventoryDeliveryRecord(models.Model):
     inventory = models.ForeignKey(Inventory, on_delete=models.PROTECT)
     quantity = models.IntegerField()
     unit_order_price = models.IntegerField()
+    user_created = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)
+    date_created = models.DateField(auto_now_add=True, blank=True)
