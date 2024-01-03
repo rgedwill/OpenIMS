@@ -30,5 +30,6 @@ class Delivery(models.Model):
     '''
     created_date = models.DateTimeField(auto_now_add=True, blank=True)
     delivery_date = models.DateField()
+    delivery_type = models.ForeignKey(DeliveryType, on_delete=models.CASCADE)
     
 

@@ -16,7 +16,11 @@ class InventorySerializer(serializers.ModelSerializer):
 
 class InventoryDeliveryRecordSerializer(serializers.ModelSerializer):
     model = InventoryDeliveryRecord
+    # user_created = serializers.ReadOnlyField(source='user_created.id')
+
     fields = [
         'delivery',
-        'inventory'
+        'inventory',
+        'user_created',
+        'date_created'
     ]

@@ -127,18 +127,10 @@ AUTH_PASSWORD_VALIDATORS = [
 NPM_BIN_PATH = "npm.cmd"
 
 TAILWIND_APP_NAME = 'theme'
+
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
-
-# Config for django-compressor
-COMPRESS_ROOT = BASE_DIR / 'static'
-
-COMPRESS_ENABLED = True
-
-STATICFILES_FINDERS = ('compressor.finders.CompressorFinder',)
-
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

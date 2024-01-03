@@ -5,13 +5,12 @@ from rest_framework.renderers import TemplateHTMLRenderer
 from django.http import Http404
 from rest_framework.response import Response
 from inventory.models import Inventory, InventoryDeliveryRecord
-from inventory.serializers import InventorySerializer
+from inventory.serializers import InventorySerializer, InventoryDeliveryRecordSerializer
 
 
 class InventoryList(generics.ListCreateAPIView):
     queryset = Inventory.objects.all()
     serializer_class = InventorySerializer
-
 
 class InventoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Inventory.objects.all()
@@ -19,4 +18,8 @@ class InventoryDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class InventoryDeliveryRecordList(generics.ListCreateAPIView):
     queryset = InventoryDeliveryRecord.objects.all()
-    serializer_class = InventorySerializer
+    serializer_class = InventoryDeliveryRecordSerializer
+
+class InventoryDeliveryRecordDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = InventoryDeliveryRecord.objects.all()
+    serializer_class = InventoryDeliveryRecordSerializer
