@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import *
+from .models import Inventory, Location, Unit, DeliveryType
 from import_export.admin import ImportExportMixin
 
 class InventoryAdmin(ImportExportMixin, admin.ModelAdmin):
