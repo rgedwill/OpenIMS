@@ -20,9 +20,9 @@ class InventoryDeliveryRecordList(generics.ListCreateAPIView):
     queryset = InventoryDeliveryRecord.objects.all()
     serializer_class = InventoryDeliveryRecordSerializer
 
-    def perform_create(self, serializer):
-        # write delivery algorithm here
-        serializer.save()
+    # def perform_create(self, serializer):
+    #     # write delivery algorithm here
+    #     serializer.save()
 
 class InventoryDeliveryRecordDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = InventoryDeliveryRecord.objects.all()
