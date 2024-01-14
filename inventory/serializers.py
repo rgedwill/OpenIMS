@@ -15,12 +15,15 @@ class InventorySerializer(serializers.ModelSerializer):
         ]
 
 class InventoryDeliveryRecordSerializer(serializers.ModelSerializer):
-    model = InventoryDeliveryRecord
     # user_created = serializers.ReadOnlyField(source='user_created.id')
+    class Meta:
+        model = InventoryDeliveryRecord
+        fields = [
+            'delivery',
+            'inventory',
+            'quantity',
+            'unit_order_price',
+            'user_created',
+            'date_created',
 
-    fields = [
-        'delivery',
-        'inventory',
-        'user_created',
-        'date_created'
-    ]
+        ]

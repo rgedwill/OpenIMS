@@ -64,7 +64,7 @@ class Inventory(models.Model):
 class Unit(models.Model):
     '''
     Model for an "instance" of Inventory. It has a simple, loose connection via foreign key, but
-    functions completely differnetly from Inventory. These items can be moved, counted, duplicated,
+    functions completely differently from Inventory. These items can be moved, counted, duplicated,
      defected, etc.
     '''
     inventory = models.ForeignKey(Inventory, on_delete=models.PROTECT)
