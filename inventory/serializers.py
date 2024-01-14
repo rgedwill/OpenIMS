@@ -19,7 +19,6 @@ class InventoryDeliveryRecordSerializer(serializers.ModelSerializer):
     class Meta:
         model = InventoryDeliveryRecord
         fields = [
-            'delivery',
             'inventory',
             'quantity',
             'unit_order_price',

@@ -46,7 +46,9 @@ class InventoryDeliveryRecordList(generics.ListCreateAPIView):
             print("Creating new delivery record... ")
             d = Delivery(delivery_date=next_delivery_date, delivery_type=inventory_object.delivery_type)
             d.save()
-        
+            
+        print(d.id)
+        serializer.validated_data['delivery_id'] = d.id
         serializer.save()
 
 class InventoryDeliveryRecordDetail(generics.RetrieveUpdateDestroyAPIView):
