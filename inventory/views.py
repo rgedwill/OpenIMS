@@ -21,12 +21,25 @@ class InventoryDeliveryRecordList(generics.ListCreateAPIView):
     serializer_class = InventoryDeliveryRecordSerializer
 
     def perform_create(self, serializer):
-        
+        '''
+        Overrides the perform_create method in the drf CreateModelMixin (mixins.py).
+        As seen in the source code, the only line required to be called to keep functionality the same
+        is serializer.save(). The rest of drf's logic occurs in create() which calles perform_create(),
+        so this is basically like a super().
+
+        Most of the logic is tied to checking if a delivery record already exists, and creating/updating
+        the Delivery or InventoryDeliveryRecord as necessary.
+        asd'''
         # always use validated_data at this stage, can't remember where I read that lol classic
         inventory_object = serializer.validated_data['inventory']
         
+        delivery_type_object = inventory_object.delivery_type
         # handy wee method I found for datetime here to just return the date part of a datetime object
-        next_delivery_date = datetime.date(inventory_object.delivery_type.next_delivery_date)
+        next_delivery_date = datetime.date(delivery_type_object.next_delivery_date)
+        
+        # if next_delivery_date is before right now, recalculate the next recurrence
+        if next_delivery_date < datetime.date(datetime.now()):
+            next_delivery_date = delivery_type_object.recurrences.after(datetime.now())
         
         # initialize to fail gracefully
         d = Delivery()
