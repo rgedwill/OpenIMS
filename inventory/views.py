@@ -1,13 +1,16 @@
-from django.shortcuts import render
+from django.http import Http404
+from django.db.models import Sum
 
 from rest_framework import generics
-from rest_framework.renderers import TemplateHTMLRenderer
-from django.http import Http404
-from rest_framework.response import Response
+
 from inventory.models import Inventory, InventoryDeliveryRecord
+
 from inventory.serializers import InventorySerializer, InventoryDeliveryRecordSerializer
+
 from deliveries.models import Delivery, DeliveryType
+
 from datetime import datetime
+
 class InventoryList(generics.ListCreateAPIView):
     queryset = Inventory.objects.all()
     serializer_class = InventorySerializer
@@ -63,6 +66,10 @@ class InventoryDeliveryRecordList(generics.ListCreateAPIView):
         print(d.id)
         serializer.validated_data['delivery_id'] = d.id
         serializer.save()
+
+    def get_queryset(self):
+        idr_annotated_by_order_quantity = InventoryDeliveryRecord.objects.annotate(Sum("order_quantity"))
+        return idr_annotated_by_order_quantity
 
 class InventoryDeliveryRecordDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = InventoryDeliveryRecord.objects.all()
