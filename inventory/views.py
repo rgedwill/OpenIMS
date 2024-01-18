@@ -37,6 +37,11 @@ class InventoryDeliveryRecordList(generics.ListCreateAPIView):
         inventory_object = serializer.validated_data['inventory']
         
         delivery_type_object = inventory_object.delivery_type
+        if delivery_type_object is None:
+            
+            # This value error is most often caused by an API user inputting an invalid inventory_id
+            raise ValueError
+        
         # handy wee method I found for datetime here to just return the date part of a datetime object
         next_delivery_date = datetime.date(delivery_type_object.next_delivery_date)
         
@@ -68,9 +73,10 @@ class InventoryDeliveryRecordList(generics.ListCreateAPIView):
         serializer.save()
 
     def get_queryset(self):
-        idr_annotated_by_order_quantity = InventoryDeliveryRecord.objects.annotate(Sum("order_quantity"))
-        return idr_annotated_by_order_quantity
-
+        
+        # returns annotated table with the sum of quantities for each inventory item
+        return InventoryDeliveryRecord.objects.annotate(Sum("quantity"))
+    
 class InventoryDeliveryRecordDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = InventoryDeliveryRecord.objects.all()
     serializer_class = InventoryDeliveryRecordSerializer
