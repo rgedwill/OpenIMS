@@ -35,13 +35,13 @@ class InventoryDeliveryRecordList(generics.ListCreateAPIView):
         asd'''
         # always use validated_data at this stage, can't remember where I read that lol classic
         inventory_object = serializer.validated_data['inventory']
-        
+
         delivery_type_object = inventory_object.delivery_type
         if delivery_type_object is None:
             
             # This value error is most often caused by an API user inputting an invalid inventory_id
-            raise ValueError
-        
+            raise ValueError("Related delivery type does not exist")
+
         # handy wee method I found for datetime here to just return the date part of a datetime object
         next_delivery_date = datetime.date(delivery_type_object.next_delivery_date)
         
