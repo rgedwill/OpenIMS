@@ -1,5 +1,6 @@
 from django.http import Http404
-from django.db.models import Sum
+from django.db.models import F, Subquery, OuterRef, IntegerField, Sum, Value, Count
+from django.db.models.functions import Coalesce
 
 from rest_framework import generics
 
@@ -74,8 +75,44 @@ class InventoryDeliveryRecordList(generics.ListCreateAPIView):
 
     def get_queryset(self):
         
+        # InventoryDeliveryRecord.objects.annotate(
+        #     count_model_a=Count('ModelA', distinct=True), 
+        #     sum_model_b=Coalesce(
+        #         Subquery(
+        #             InventoryDeliveryRecord.objects.filter(
+        #                 MyModel=OuterRef('pk')
+        #             ).values('MyModel_id').annotate(
+        #                 my_sum=Sum('MyModel_Field')
+        #             ).values('my_sum')[:1],
+        #             output_field=IntegerField()
+        #         ),
+        #         Value(0)
+        #     )
+        # ).values("count_model_a", "sum_model_b")
+        
+        # i= InventoryDeliveryRecord.objects.values('inventory_id').annotate(
+        #     Sum("quantity")
+        # )
+        i = InventoryDeliveryRecord.objects.distinct('inventory__name').annotate(
+            qty=(Sum("quantity"))
+        )
+        print(i)
+        print(i[0])
+        # dataset = InventoryDeliveryRecord.objects.select_related('inventory')
+        # for i in dataset:
+        #     print(i.inventory.name)
         # returns annotated table with the sum of quantities for each inventory item
-        return InventoryDeliveryRecord.objects.annotate(Sum("quantity"))
+        # idr = InventoryDeliveryRecord.objects.annotate(
+        #     name=F('inventory__name', distinct=True), 
+        #     total_quantity=Sum("quantity")
+        #     )
+        idr = InventoryDeliveryRecord.objects.annotate(
+            name=F('inventory__name')
+        )
+        # InventoryDeliveryRecord.objects.annotate()
+        print(idr[0].name)
+        # return idr
+
     
 class InventoryDeliveryRecordDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = InventoryDeliveryRecord.objects.all()

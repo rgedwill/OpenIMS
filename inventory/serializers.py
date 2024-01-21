@@ -15,12 +15,18 @@ class InventorySerializer(serializers.ModelSerializer):
         ]
 
 class InventoryDeliveryRecordSerializer(serializers.ModelSerializer):
+    name = serializers.StringRelatedField()
     # user_created = serializers.ReadOnlyField(source='user_created.id')
-
+    
+    def validate_quantity(self, qty):
+        if qty < 1:
+            raise serializers.ValidationError("Quantity too low. Must order at least one full casepack")
+        return qty
         
     class Meta:
         model = InventoryDeliveryRecord
         fields = [
+            'name',
             'inventory',
             'quantity',
             'unit_order_price',
