@@ -57,12 +57,16 @@ INSTALLED_APPS = [
     'multiselectfield',
     'recurrence',
     'compressor',
-
-
+    'django_extensions',
+    'jupyter',
     'tailwind',
     'theme'
 ]
-
+NOTEBOOK_ARGUMENTS = [
+    '--ip', '0.0.0.0',
+    '--port', '8888',
+]
+IPYTHON_KERNEL_DISPLAY_NAME = 'Django Kernel'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

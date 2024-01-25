@@ -10,6 +10,7 @@ htmx
 
 MANTRAS:
 - Units should never be "deleted"
+- Always use the CustomUser model for roles and permissions
 
 TODO:
 - migrate to postgres

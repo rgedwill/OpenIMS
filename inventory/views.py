@@ -60,13 +60,17 @@ class InventoryDeliveryRecordList(generics.ListCreateAPIView):
         # be faster. This may not matter in any cases except for if/when we add
         # importing functionality through this pipeline.
         try:
-            d = Delivery.objects.get(delivery_date=next_delivery_date)
+            d = Delivery.objects\
+                .get(delivery_date=next_delivery_date)
         except Delivery.DoesNotExist as e:
             
             # printing both the error and the creation to easily track this behavior in logs
             print(e)
             print("Creating new delivery record... ")
-            d = Delivery(delivery_date=next_delivery_date, delivery_type=inventory_object.delivery_type)
+            d = Delivery(
+                delivery_date=next_delivery_date, 
+                delivery_type=inventory_object.delivery_type
+                )
             d.save()
             
         print(d.id)
@@ -93,9 +97,18 @@ class InventoryDeliveryRecordList(generics.ListCreateAPIView):
         # i= InventoryDeliveryRecord.objects.values('inventory_id').annotate(
         #     Sum("quantity")
         # )
-        i = InventoryDeliveryRecord.objects.distinct('inventory__name').annotate(
-            qty=(Sum("quantity"))
-        )
+        qs = super().get_queryset()\
+                .fetch_related(
+                    'inventory'
+                    )
+        
+        i = InventoryDeliveryRecord.objects\
+            .annotate(
+                qty=(Sum("quantity"))
+            )\
+            .distinct(
+                'inventory__name'
+            )
         print(i)
         print(i[0])
         # dataset = InventoryDeliveryRecord.objects.select_related('inventory')
