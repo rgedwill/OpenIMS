@@ -15,6 +15,12 @@ from datetime import datetime
 class InventoryList(generics.ListCreateAPIView):
     queryset = Inventory.objects.all()
     serializer_class = InventorySerializer
+    
+    def get_queryset(self):
+        
+        # prefetch all inventorydeliveryrecords when fetching delivery, as this is *almost*
+        # always going to be relevant to inventory data at the List level
+        return super().get_queryset().prefetch_related('inventorydeliveryrecord_set')
 
 class InventoryDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Inventory.objects.all()
