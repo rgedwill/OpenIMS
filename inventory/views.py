@@ -17,7 +17,6 @@ class InventoryList(generics.ListCreateAPIView):
     serializer_class = InventorySerializer
     
     def get_queryset(self):
-        
         # prefetch all inventorydeliveryrecords when fetching delivery, as this is *almost*
         # always going to be relevant to inventory data at the List level
         return super().get_queryset().prefetch_related('inventorydeliveryrecord_set')
