@@ -77,63 +77,6 @@ class InventoryDeliveryRecordList(generics.ListCreateAPIView):
         serializer.validated_data['delivery_id'] = d.id
         serializer.save()
 
-    def get_queryset(self):
-        
-        # InventoryDeliveryRecord.objects.annotate(
-        #     count_model_a=Count('ModelA', distinct=True), 
-        #     sum_model_b=Coalesce(
-        #         Subquery(
-        #             InventoryDeliveryRecord.objects.filter(
-        #                 MyModel=OuterRef('pk')
-        #             ).values('MyModel_id').annotate(
-        #                 my_sum=Sum('MyModel_Field')
-        #             ).values('my_sum')[:1],
-        #             output_field=IntegerField()
-        #         ),
-        #         Value(0)
-        #     )
-        # ).values("count_model_a", "sum_model_b")
-        
-        # i= InventoryDeliveryRecord.objects.values('inventory_id').annotate(
-        #     Sum("quantity")
-        # )
-        qs = super().get_queryset()\
-                .fetch_related(
-                    'inventory'
-                    )\
-                .values(
-                    'inventory_id'
-                )\
-                .distinct()\
-                .annotate(
-                    Sum("quantity")
-                )\
-                .all()
-        # the above is an attempt at this:
-        # InventoryDeliveryRecord.objects.values('inventory_id').distinct().annotate(Sum("quantity")).all()
-        
-        
-        # i = InventoryDeliveryRecord.objects\
-        #     .annotate(
-        #         qty=(Sum("quantity"))
-        #     )\
-        #     .distinct(
-        #         'inventory__name'
-        #     )
-
-        # dataset = InventoryDeliveryRecord.objects.select_related('inventory')
-        # for i in dataset:
-        #     print(i.inventory.name)
-        # returns annotated table with the sum of quantities for each inventory item
-        # idr = InventoryDeliveryRecord.objects.annotate(
-        #     name=F('inventory__name', distinct=True), 
-        #     total_quantity=Sum("quantity")
-        #     )
-
-        # InventoryDeliveryRecord.objects.annotate()
-        print(idr[0].name)
-        # return idr
-
     
 class InventoryDeliveryRecordDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = InventoryDeliveryRecord.objects.all()
