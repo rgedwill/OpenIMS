@@ -100,17 +100,27 @@ class InventoryDeliveryRecordList(generics.ListCreateAPIView):
         qs = super().get_queryset()\
                 .fetch_related(
                     'inventory'
-                    )
+                    )\
+                .values(
+                    'inventory_id'
+                )\
+                .distinct()\
+                .annotate(
+                    Sum("quantity")
+                )\
+                .all()
+        # the above is an attempt at this:
+        # InventoryDeliveryRecord.objects.values('inventory_id').distinct().annotate(Sum("quantity")).all()
         
-        i = InventoryDeliveryRecord.objects\
-            .annotate(
-                qty=(Sum("quantity"))
-            )\
-            .distinct(
-                'inventory__name'
-            )
-        print(i)
-        print(i[0])
+        
+        # i = InventoryDeliveryRecord.objects\
+        #     .annotate(
+        #         qty=(Sum("quantity"))
+        #     )\
+        #     .distinct(
+        #         'inventory__name'
+        #     )
+
         # dataset = InventoryDeliveryRecord.objects.select_related('inventory')
         # for i in dataset:
         #     print(i.inventory.name)
@@ -119,9 +129,7 @@ class InventoryDeliveryRecordList(generics.ListCreateAPIView):
         #     name=F('inventory__name', distinct=True), 
         #     total_quantity=Sum("quantity")
         #     )
-        idr = InventoryDeliveryRecord.objects.annotate(
-            name=F('inventory__name')
-        )
+
         # InventoryDeliveryRecord.objects.annotate()
         print(idr[0].name)
         # return idr
