@@ -56,9 +56,9 @@ INSTALLED_APPS = [
     'import_export',
     'multiselectfield',
     'recurrence',
-    'compressor',
     'django_extensions',
     'jupyter',
+    
     'tailwind',
     'theme'
 ]
@@ -77,7 +77,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_browser_reload.middleware.BrowserReloadMiddleware',
-
 ]
 
 ROOT_URLCONF = 'openIMS.urls'

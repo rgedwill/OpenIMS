@@ -13,9 +13,21 @@ class InventoryPortal(APIView):
     template_name = 'inventory_portal/inventory.html'
 
     def get(self, request):
-        inventory_data = Inventory.objects.prefetch_related('inventorydeliveryrecord_set').all()
+        
+        # prefetch inventorydeliveryrecords
+        inventory_data = Inventory.objects\
+            .prefetch_related('inventorydeliveryrecord_set')\
+            .all()
+        
+        # serialize all inventory and related data
         serializer = InventorySerializer(inventory_data)
-        return Response({'inventory': inventory_data, 'serializer': serializer})
+
+        # serializer mostly only needed for a form
+        return Response(
+            {
+                'inventory': inventory_data, 
+                'serializer': serializer
+             })
 
         
 
