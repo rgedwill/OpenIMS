@@ -58,14 +58,8 @@ INSTALLED_APPS = [
     'recurrence',
     'django_extensions',
     'jupyter',
-    
-    'tailwind',
-    'theme'
-]
-NOTEBOOK_ARGUMENTS = [
-    '--ip', '0.0.0.0',
-    '--port', '8888',
-]
+    ]
+
 IPYTHON_KERNEL_DISPLAY_NAME = 'Django Kernel'
 
 MIDDLEWARE = [
@@ -131,13 +125,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # soluton from
 # https://github.com/timonweb/django-tailwind/issues/92#issuecomment-942836700
-NPM_BIN_PATH = "npm.cmd"
+# NPM_BIN_PATH = "npm.cmd"
 
-TAILWIND_APP_NAME = 'theme'
-
-INTERNAL_IPS = [
-    "127.0.0.1",
-]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -155,7 +144,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

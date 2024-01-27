@@ -1,0 +1,33 @@
+<div overflow-x-auto>
+      
+    <table class="table table-zebra table-lg table-pin-rows">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>SKU</th>
+                <th>Delivery Type</th>
+                <th>On Order</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for inventory_entry in inventory %}
+
+                <tr>
+                    <td>{{ inventory_entry.name }}</td>
+                    <td>{{ inventory_entry.sku }}</td>
+                    <td>{{ inventory_entry.delivery_type }}</td>
+                    <td>
+                        <span>12</span>                        
+                    </td>
+                    <td>
+
+                        <button class="btn btn-sm btn-primary">Delivery Details</button>
+
+                    </td>
+
+                </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
