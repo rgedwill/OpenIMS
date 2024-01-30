@@ -1,6 +1,10 @@
 <div overflow-x-auto>
-      
-    <table class="table table-zebra table-lg table-pin-rows">
+    {% comment %} {{ inventory|json_script:"inventory-json" }} {% endcomment %}
+
+    <table x-data="{inventory: []}"
+            x-init="inventory = getData()" 
+            class="table table-zebra table-lg 
+                    table-pin-rows">
         <thead>
             <tr>
                 <th>Name</th>
@@ -11,23 +15,46 @@
             </tr>
         </thead>
         <tbody>
-        {% for inventory_entry in inventory %}
-
+            {% for inventory_entry in inventory %}
                 <tr>
-                    <td>{{ inventory_entry.name }}</td>
-                    <td>{{ inventory_entry.sku }}</td>
-                    <td>{{ inventory_entry.delivery_type }}</td>
+                    {% comment %} <td>{{ inventory_entry.name }}</td> {% endcomment %}
+                    <td>{{inventory_entry.name}}</td>
+                    <td> {{inventory_entry.sku }}</td>
+                    {% comment %} <td x-text="inventory_entry.delivery_type"></td> {% endcomment %}
+                    <td>{{inventory_entry.delivery_type}}</td>
                     <td>
-                        <span>12</span>                        
+                        {{inventory_entry.id}}                       
                     </td>
                     <td>
 
-                        <button class="btn btn-sm btn-primary">Delivery Details</button>
+                        <button 
+                            x-on:click="listDetailsModal.showModal()"
+                            hx-get="/portal/inventory/list-detail/{{inventory_entry.id}}"
+                            hx-target="#listDetailsContainer"
+                            hx-swap="innerHtml"
+                            class="btn btn-sm btn-primary">
+                            Delivery Details
+                        </button>
 
                     </td>
+                    
 
                 </tr>
-        {% endfor %}
+
+                {%endfor%}
         </tbody>
     </table>
+    <dialog id="listDetailsModal" class="modal">
+        <div class="modal-box">
+            <div id="listDetailsContainer"></div>
+            <h3 class="font-bold text-lg">Hello!</h3>
+            <p class="py-4">Press ESC key or click the button below to close</p>
+            <div class="modal-action">
+                  <form method="dialog">
+                    <!-- if there is a button in form, it will close the modal -->
+                    <button class="btn">Close</button>
+                  </form>
+            </div>
+        </div>
+    </dialog>
 </div>
