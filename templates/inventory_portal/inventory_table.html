@@ -1,8 +1,7 @@
 <div overflow-x-auto>
     {% comment %} {{ inventory|json_script:"inventory-json" }} {% endcomment %}
 
-    <table x-data="{inventory: []}"
-            x-init="inventory = getData()" 
+    <table x-data="{}"
             class="table table-zebra table-lg 
                     table-pin-rows">
         <thead>
@@ -31,7 +30,7 @@
                             x-on:click="listDetailsModal.showModal()"
                             hx-get="/portal/inventory/list-detail/{{inventory_entry.id}}"
                             hx-target="#listDetailsContainer"
-                            hx-swap="innerHtml"
+                            hx-swap="outerHtml"
                             class="btn btn-sm btn-primary">
                             Delivery Details
                         </button>

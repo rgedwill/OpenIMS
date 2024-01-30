@@ -38,10 +38,9 @@ class InventoryListDetail(APIView):
     template_name = 'inventory_portal/inventory-list-detail.html'
 
     def get(self, request, pk):
-        print(pk)
-        i = Inventory.objects.filter(id=pk).values().first()
+        inventory_detail = Inventory.objects.filter(id=pk).values().first()
         return Response(
-            {'inventory_detail': i}
+            {'inventory_detail': inventory_detail}
         )
 
 def t_inventory_portal_test(request):
