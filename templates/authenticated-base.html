@@ -44,8 +44,14 @@
               </ul>
             </div>
           </div>
+          <div class="drawer lg:drawer-open xl:drawer-open">
+            <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+
+          <div class="drawer-content ">
             {% block content %}
-        {% endblock %}
+            {% endblock %}
+          </div> 
+          {% include 'drawer-sidebar.html' %}
     </div>
     
 </body>
