@@ -16,10 +16,8 @@
         <tbody>
             {% for inventory_entry in inventory %}
                 <tr>
-                    {% comment %} <td>{{ inventory_entry.name }}</td> {% endcomment %}
                     <td>{{inventory_entry.name}}</td>
                     <td> {{inventory_entry.sku }}</td>
-                    {% comment %} <td x-text="inventory_entry.delivery_type"></td> {% endcomment %}
                     <td>{{inventory_entry.delivery_type}}</td>
                     <td>
                         {{inventory_entry.id}}                       
@@ -32,7 +30,7 @@
                             hx-target="#listDetailsContainer"
                             hx-swap="outerHtml"
                             class="btn btn-sm btn-primary">
-                            Delivery Details
+                            View Details
                         </button>
 
                     </td>
