@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.DeliveryList.as_view()),
     path('<int:pk>/', views.DeliveryDetail.as_view()),
 
+
 ]

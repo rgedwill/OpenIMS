@@ -1,0 +1,5 @@
+id,sku,brand,vendor,delivery_type,name,model,unit_delivery_quantity,sale_price
+1,12345678,BrandX,coca-cola,default,Premium Laptop,inventory.inventory,10,1200
+2,23456789,BrandY,goodfellow,cold,Smartphone Pro,inventory.inventory,15,800
+3,34567890,BrandZ,ulta,third-party,Ultra HD LED TV,inventory.inventory,5,2000
+4,45678901,BrandX,coca-cola,default,Barista Coffee Maker,inventory.inventory,8,300

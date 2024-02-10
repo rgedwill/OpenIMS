@@ -34,6 +34,8 @@ urlpatterns = [
 
     # DISPLAY
     path('portal/inventory/', include('inventory_portal.urls')),
+    path('portal/deliveries/', include('deliveries_portal.urls')),
+
     
     #API
     path('inventory/', include('inventory.urls')),

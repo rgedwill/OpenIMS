@@ -1,0 +1,189 @@
+[
+  {
+    "name": "Sizzling Sunshine",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "12345678",
+    "brand": "Coca-Cola",
+    "vendor": "coca-cola",
+    "delivery_type": 2,
+    "unit_delivery_quantity": 50,
+    "sale_price": 199
+  },
+  {
+    "name": "Midnight Elegance",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "87654321",
+    "brand": "Goodfellow",
+    "vendor": "goodfellow",
+    "delivery_type": 1,
+    "unit_delivery_quantity": 30,
+    "sale_price": 129
+  },
+  {
+    "name": "Ocean Breeze",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "23456789",
+    "brand": "Ulta",
+    "vendor": "ulta",
+    "delivery_type": 3,
+    "unit_delivery_quantity": 40,
+    "sale_price": 149
+  },
+  {
+    "name": "Golden Harvest",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "34567890",
+    "brand": "Coca-Cola",
+    "vendor": "coca-cola",
+    "delivery_type": 2,
+    "unit_delivery_quantity": 25,
+    "sale_price": 179
+  },
+  {
+    "name": "Silk Symphony",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "78901234",
+    "brand": "Goodfellow",
+    "vendor": "goodfellow",
+    "delivery_type": 1,
+    "unit_delivery_quantity": 35,
+    "sale_price": 99
+  },
+  {
+    "name": "Ruby Red",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "45678901",
+    "brand": "Ulta",
+    "vendor": "ulta",
+    "delivery_type": 3,
+    "unit_delivery_quantity": 45,
+    "sale_price": 119
+  },
+  {
+    "name": "Mystic Moonlight",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "89012345",
+    "brand": "Coca-Cola",
+    "vendor": "coca-cola",
+    "delivery_type": 1,
+    "unit_delivery_quantity": 20,
+    "sale_price": 159
+  },
+  {
+    "name": "Autumn Aura",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "56789012",
+    "brand": "Goodfellow",
+    "vendor": "goodfellow",
+    "delivery_type": 3,
+    "unit_delivery_quantity": 55,
+    "sale_price": 89
+  },
+  {
+    "name": "Sunny Serenity",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "21098765",
+    "brand": "Ulta",
+    "vendor": "ulta",
+    "delivery_type": 2,
+    "unit_delivery_quantity": 30,
+    "sale_price": 139
+  },
+  {
+    "name": "Luscious Lavender",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "65432109",
+    "brand": "Coca-Cola",
+    "vendor": "coca-cola",
+    "delivery_type": 1,
+    "unit_delivery_quantity": 40,
+    "sale_price": 169
+  },
+  {
+    "name": "Velvet Twilight",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "10987654",
+    "brand": "Goodfellow",
+    "vendor": "goodfellow",
+    "delivery_type": 2,
+    "unit_delivery_quantity": 50,
+    "sale_price": 79
+  },
+  {
+    "name": "Enchanted Elegance",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "43210987",
+    "brand": "Ulta",
+    "vendor": "ulta",
+    "delivery_type": 3,
+    "unit_delivery_quantity": 35,
+    "sale_price": 109
+  },
+  {
+    "name": "Celestial Charm",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "56789012",
+    "brand": "Coca-Cola",
+    "vendor": "coca-cola",
+    "delivery_type": 1,
+    "unit_delivery_quantity": 25,
+    "sale_price": 129
+  },
+  {
+    "name": "Harvest Hues",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "89012345",
+    "brand": "Goodfellow",
+    "vendor": "goodfellow",
+    "delivery_type": 2,
+    "unit_delivery_quantity": 45,
+    "sale_price": 149
+  },
+  {
+    "name": "Glistening Gardens",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "32109876",
+    "brand": "Ulta",
+    "vendor": "ulta",
+    "delivery_type": 3,
+    "unit_delivery_quantity": 30,
+    "sale_price": 169
+  },
+  {
+    "name": "Moonlit Melody",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "23456789",
+    "brand": "Coca-Cola",
+    "vendor": "coca-cola",
+    "delivery_type": 2,
+    "unit_delivery_quantity": 40,
+    "sale_price": 89
+  },
+  {
+    "name": "Serenading Sunset",
+    "model": "inventory.inventory",
+    "id": "",
+    "sku": "87654321",
+    "brand": "Goodfellow",
+    "vendor": "goodfellow",
+    "delivery_type": 1,
+    "unit_delivery_quantity": 30,
+    "sale_price": 119
+  }
+]
