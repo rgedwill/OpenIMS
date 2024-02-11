@@ -1,1 +1,11 @@
-<h1>deliveries page</h1>
+{% extends 'authenticated-base.html' %}
+{% block content %}
+
+<div class="flex flex-col items-center mx-10 md:mx-20">
+
+    <h1 class="prose-2xl mb-4">Delivery List</h1>
+    <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
+</div>
+
+
+{% endblock %}
