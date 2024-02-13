@@ -38,6 +38,8 @@ class InventoryListDetail(APIView):
     template_name = 'inventory_portal/inventory-list-detail.html'
 
     def get(self, request, pk):
+        
+        #TODO: prefetch related details
         inventory_detail = Inventory.objects.filter(id=pk).values().first()
         return Response(
             {'inventory_detail': inventory_detail}
