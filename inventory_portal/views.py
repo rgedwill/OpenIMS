@@ -21,12 +21,9 @@ class InventoryPortal(APIView):
         inventory_data = Inventory.objects\
             .select_related('delivery_type')\
             .all()
-        # serialize all inventory and related data
-        serializer = InventorySerializer(inventory_data)
 
         delivery_type_data = [d for d in DeliveryType.objects.values()]
         
-        # serializer mostly only needed for a form
         return Response(
             {
                 'inventory': inventory_data,
