@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'inventory',
     'deliveries',
     'testapp',
+    'theme',
 
     # display
     'inventory_portal',
@@ -58,8 +59,13 @@ INSTALLED_APPS = [
     'recurrence',
     'django_extensions',
     'jupyter',
+    'tailwind'
     ]
-
+TAILWIND_APP_NAME = 'theme'
+NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 IPYTHON_KERNEL_DISPLAY_NAME = 'Django Kernel'
 
 MIDDLEWARE = [

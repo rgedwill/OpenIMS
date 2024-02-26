@@ -41,9 +41,45 @@ module.exports = {
          */
         // '../../**/*.py'
     ],
-    theme: {
-        extend: {},
+    daisyui: {
+      themes: [
+        {
+          mytheme: {
+            "primary": "#a991f7",
+            "secondary": "#f6d860",
+            "accent": "#37cdbe",
+            "neutral": "#3d4451",
+            "base-100": "#ffffff",
+          },
+        },
+        "dark",
+        "cupcake",
+      ],
     },
+    theme: {
+        colors: {
+          'blue' : '#19A1C3',
+          'cadet' : {
+            '100': '#eaeaed',
+            '200': '#c0c1c8',
+            '300': '#818391',
+            '400': '#57596c',
+            '500':'#2D3047',
+            '600': '#242639',
+            '700': '#1b1d2b',
+            '800': '#090a0e'
+          },
+          'ivory' : '#FFFFF0',
+          'rose-quartz': {
+            '400': '#fbefee',
+            '500': '#F7CAC9',
+            '600': '#e79998'
+          }
+        },
+        fontFamily: {
+          serif: ['Alegreya Sans', 'serif'],
+        }
+      },
     plugins: [
         /**
          * '@tailwindcss/forms' is the forms plugin that provides a minimal styling
@@ -53,5 +89,6 @@ module.exports = {
         require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
         require('@tailwindcss/aspect-ratio'),
+        require("daisyui")
     ],
 }

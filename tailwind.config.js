@@ -1,37 +1,28 @@
 /** @type {import('tailwindcss').Config} */
-
-const colors = require('tailwindcss/colors')
-
-module.exports = {
-  daisyui: {
-    themes: ['pastel',
-      {
-        mytheme: {
-        
-"primary": "#caebf2",
-        
-"secondary": "#a9a9a9",
-        
-"accent": "#ff3b3f",
-        
-"neutral": "#25262b",
-        
-"base-100": "#f8fafc",
-        
-"info": "#64748b",
-        
-"success": "#818cf8",
-        
-"warning": "#ff3b3f",
-        
-"error": "#ff8989",
-        },
+export default {
+  theme: {
+    colors: {
+      'blue' : '#19A1C3',
+      'cadet' : {
+        '100': '#eaeaed',
+        '200': '#c0c1c8',
+        '300': '#818391',
+        '400': '#57596c',
+        '500':'#2D3047',
+        '600': '#242639',
+        '700': '#1b1d2b',
+        '800': '#090a0e'
       },
-    ],
+      'ivory' : '#FFFFF0',
+      'rose-quartz': {
+        '400': '#fbefee',
+        '500': '#F7CAC9',
+        '600': '#e79998'
+      }
+    },
+    fontFamily: {
+      serif: ['Alegreya Sans', 'serif'],
+    }
   },
-  content: [
-    './templates/**/*.html'
-  ],
-  plugins: [require("daisyui")],
+  plugins: [],
 }
-
