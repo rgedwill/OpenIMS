@@ -1,5 +1,5 @@
 {% comment %} {% load compress %} {% endcomment %}
-{% comment %} {% load static %} {% endcomment %}
+ {% load static %}
 
 <!DOCTYPE html>
 <html  lang="en">
@@ -26,7 +26,7 @@
 
 </head>
 <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
-        <div class="navbar bg-gray">
+        <div class="navbar bg-cadet-100">
             <div class="flex-1">
               <a class="btn btn-ghost text-xl">OpenIMS</a>
             </div>
@@ -38,7 +38,7 @@
                     <summary>
                       Parent
                     </summary>
-                    <ul class="p-2 bg-base-100 rounded-t-none">
+                    <ul class="p-2 bg-blue rounded-t-none">
                       <li><a>Link 1</a></li>
                       <li><a>Link 2</a></li>
                     </ul>
@@ -50,7 +50,7 @@
           <div class="drawer lg:drawer-open xl:drawer-open">
             <input id="my-drawer" type="checkbox" class="drawer-toggle" />
 
-          <div class="drawer-content ">
+          <div class="drawer-content bg-ivory">
             {% block content %}
             {% endblock %}
           </div> 

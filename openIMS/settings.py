@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     'multiselectfield',
     'recurrence',
     'django_extensions',
-    'jupyter',
     'tailwind'
     ]
 TAILWIND_APP_NAME = 'theme'
@@ -76,7 +75,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_browser_reload.middleware.BrowserReloadMiddleware',
 ]
 
 ROOT_URLCONF = 'openIMS.urls'
@@ -102,7 +100,7 @@ WSGI_APPLICATION = 'openIMS.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'openIMS', 
+        'NAME': 'openims', 
         'USER': 'postgres',
         'PASSWORD': 'ryan',
         'HOST': '127.0.0.1', 
