@@ -41,21 +41,6 @@ module.exports = {
          */
         // '../../**/*.py'
     ],
-    daisyui: {
-      themes: [
-        {
-          mytheme: {
-            "primary": "#a991f7",
-            "secondary": "#f6d860",
-            "accent": "#37cdbe",
-            "neutral": "#3d4451",
-            "base-100": "#ffffff",
-          },
-        },
-        "dark",
-        "cupcake",
-      ],
-    },
     theme: {
         colors: {
           'blue' : '#19A1C3',
@@ -89,6 +74,5 @@ module.exports = {
         require('@tailwindcss/forms'),
         require('@tailwindcss/typography'),
         require('@tailwindcss/aspect-ratio'),
-        require("daisyui")
     ],
 }

@@ -38,7 +38,7 @@ class InventoryDeliveryRecordList(generics.ListCreateAPIView):
 
         Most of the logic is tied to checking if a delivery record already exists, and creating/updating
         the Delivery or InventoryDeliveryRecord as necessary.
-        asd'''
+        '''
         # always use validated_data at this stage, can't remember where I read that lol classic
         inventory_object = serializer.validated_data['inventory']
 
@@ -78,7 +78,6 @@ class InventoryDeliveryRecordList(generics.ListCreateAPIView):
                 )
             d.save()
             
-        print(d.id)
         serializer.validated_data['delivery_id'] = d.id
         serializer.save()
 

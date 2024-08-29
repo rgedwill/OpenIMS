@@ -6,8 +6,8 @@
                     table-pin-rows">
         <thead>
             <tr>
-                <th class="bg-blue">Name</th>
-                <th class="bg-cadet-300">SKU</th>
+                <th>Name</th>
+                <th>SKU</th>
                 <th>Delivery Type</th>
                 <th>On Order</th>
                 <th>Actions</th>
@@ -18,7 +18,7 @@
                 <tr>
                     <td>{{inventory_entry.name}}</td>
                     <td> {{inventory_entry.sku }}</td>
-                    <td class="text-base text-blue">{{inventory_entry.delivery_type}}</td>
+                    <td>{{inventory_entry.delivery_type}}</td>
                     <td>
                         {{inventory_entry.id}}                       
                     </td>
@@ -29,11 +29,9 @@
                             hx-get="/portal/inventory/list-detail/{{inventory_entry.id}}"
                             hx-target="#listDetailsContainer"
                             hx-swap="outerHtml"
-                            class="bg-blue py-2 px-4 text-blue rounded">
+                            class="bg-ivory py-2 px-4 rounded">
                             View Details
                         </button>
-                        <button class="btn btn-primary">Test BTN </button>
-
                     </td>
                 </tr>
 

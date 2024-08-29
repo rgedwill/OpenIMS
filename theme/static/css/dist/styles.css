@@ -1164,6 +1164,10 @@ select {
   white-space: nowrap;
 }
 
+.rounded {
+  border-radius: 0.25rem;
+}
+
 .rounded-full {
   border-radius: 9999px;
 }
@@ -1191,19 +1195,9 @@ select {
   background-color: rgb(45 48 71 / var(--tw-bg-opacity));
 }
 
-.bg-cadet-200 {
+.bg-ivory {
   --tw-bg-opacity: 1;
-  background-color: rgb(192 193 200 / var(--tw-bg-opacity));
-}
-
-.bg-cadet-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(129 131 145 / var(--tw-bg-opacity));
-}
-
-.bg-blue {
-  --tw-bg-opacity: 1;
-  background-color: rgb(25 161 195 / var(--tw-bg-opacity));
+  background-color: rgb(255 255 240 / var(--tw-bg-opacity));
 }
 
 .p-2 {
@@ -1236,6 +1230,11 @@ select {
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .pt-5 {
